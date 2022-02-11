@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
     private Animator animator;
 
     private bool isMoving;
-    
+
     private PlayerMovement playerMovement;
-    
+
     void Start()
     {
         gameManager = GameObject.Find("Game Manager");
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         StayInBoundaries();
-        
+
         if (playerMovement.Movement != Vector3.zero)
         {
             isMoving = true;
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     {
         float minimumValue = -225f;
         float maximumValue = 225f;
-        
+
         if (transform.position.x < minimumValue)
             transform.position = new Vector3(minimumValue, transform.position.y, transform.position.z);
         if (transform.position.x > maximumValue)
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         if (transform.position.z > maximumValue)
             transform.position = new Vector3(transform.position.x, transform.position.y, maximumValue);
     }
-    
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Tree") && !isMoving)
@@ -120,18 +120,31 @@ public class Player : MonoBehaviour
         {
             if (itemList.Count != 0)
             {
-                playerMovement.enabled = false;
-                animator.SetBool("isBuilding", true);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdling", false);
-                if (gameManager.GetComponent<GameManager>().IsArcherBuildingCompleted)
+                if (itemList[itemList.Count - 1].CompareTag("Wood") && uiManager.GetComponent<UIManager>()
+                        .WoodAmountTextArcher.GetComponent<Text>().text.Equals("0") ||
+                    itemList[itemList.Count - 1].CompareTag("Rock") && uiManager.GetComponent<UIManager>()
+                        .RockAmountTextArcher.GetComponent<Text>().text.Equals("0") ||
+                    itemList[itemList.Count - 1].CompareTag("Gold") && uiManager.GetComponent<UIManager>()
+                        .GoldAmountTextArcher.GetComponent<Text>().text.Equals("0"))
                 {
-                    StartCoroutine(DeployBuildingPartArcherSoldier());
+                    playerMovement.enabled = true;
                 }
                 else
                 {
-                    StartCoroutine(DeployBuildingPartArcher());
+                    playerMovement.enabled = false;
+                    animator.SetBool("isBuilding", true);
+                    animator.SetBool("isRunning", false);
+                    animator.SetBool("isIdling", false);
+                    if (gameManager.GetComponent<GameManager>().IsArcherBuildingCompleted)
+                    {
+                        StartCoroutine(DeployBuildingPartArcherSoldier());
+                    }
+                    else
+                    {
+                        StartCoroutine(DeployBuildingPartArcher());
+                    }
                 }
+                
             }
             else if (itemList.Count == 0 && animator.GetBool("isBuilding"))
             {
@@ -144,17 +157,29 @@ public class Player : MonoBehaviour
         {
             if (itemList.Count != 0)
             {
-                playerMovement.enabled = false;
-                animator.SetBool("isBuilding", true);
-                animator.SetBool("isRunning", false);
-                animator.SetBool("isIdling", false);
-                if (gameManager.GetComponent<GameManager>().IsSpearmanBuildingCompleted)
+                if (itemList[itemList.Count - 1].CompareTag("Wood") && uiManager.GetComponent<UIManager>()
+                        .WoodAmountTextSpearman.GetComponent<Text>().text.Equals("0") ||
+                    itemList[itemList.Count - 1].CompareTag("Rock") && uiManager.GetComponent<UIManager>()
+                        .RockAmountTextSpearman.GetComponent<Text>().text.Equals("0") ||
+                    itemList[itemList.Count - 1].CompareTag("Gold") && uiManager.GetComponent<UIManager>()
+                        .GoldAmountTextSpearman.GetComponent<Text>().text.Equals("0"))
                 {
-                    StartCoroutine(DeployBuildingPartSpearmanSoldier());
+                    playerMovement.enabled = true;
                 }
                 else
                 {
-                    StartCoroutine(DeployBuildingPartSpearman());
+                    playerMovement.enabled = false;
+                    animator.SetBool("isBuilding", true);
+                    animator.SetBool("isRunning", false);
+                    animator.SetBool("isIdling", false);
+                    if (gameManager.GetComponent<GameManager>().IsSpearmanBuildingCompleted)
+                    {
+                        StartCoroutine(DeployBuildingPartSpearmanSoldier());
+                    }
+                    else
+                    {
+                        StartCoroutine(DeployBuildingPartSpearman());
+                    }
                 }
             }
             else if (itemList.Count == 0 && animator.GetBool("isBuilding"))

@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Spearman.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Components\ChromaticAberrationComponent.cs" />
+     <Compile Include="Assets\PlayerControls.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Components\BuiltinDebugViewsComponent.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Attributes\TrackballGroupAttribute.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Utils\ColorGradingCurve.cs" />
@@ -82,6 +83,7 @@
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Components\BloomComponent.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Models\MotionBlurModel.cs" />
+     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Components\UserLutComponent.cs" />
      <Compile Include="Assets\Scripts\Tree.cs" />
      <Compile Include="Assets\Scripts\Collectable.cs" />
@@ -108,8 +110,6 @@
      <Compile Include="Assets\Scripts\RockMine.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
      <Compile Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Runtime\Models\DitheringModel.cs" />
-     <Compile Include="Assets\PlayerControls.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <None Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
      <None Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Resources\Shaders\GrainGen.shader" />
      <None Include="Assets\Low Poly 3D Garbage &amp; Tow Trucks\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
